@@ -62,7 +62,7 @@ namespace TareaProgra.Comunicacion
         }
         public bool LeerMensajeCliente(string mensaje)
         {
-            if (mensaje =="chao") {
+            if (mensaje.ToLower() == "chao") {
                 return true;
             }
             else {
@@ -71,7 +71,7 @@ namespace TareaProgra.Comunicacion
         }
         public bool LeerRespuestaServidor(string mensaje)
         {
-            if (mensaje == "chao")
+            if (mensaje.ToLower() == "chao")
             {
                 return true;
             }
@@ -79,6 +79,41 @@ namespace TareaProgra.Comunicacion
             {
                 return false;
             }
+        }
+        public void ComprobarMensajes(ClienteCom cliente)
+        {
+            string mensaje;
+            string respuesta;
+            //Esperar Mensaje
+            int cont = 0;
+            while (cont == 0)
+            {
+                respuesta = cliente.Leer();
+                if (cliente.LeerMensajeCliente(respuesta))
+                {
+
+                    cliente.Desconectar();
+                    Console.WriteLine("El cliente dice: chao");
+                    Console.WriteLine("Anotado en la libreta de cosas que no me importan");
+                    cont = 1;
+
+                }
+                else
+                {
+                    Console.WriteLine("El cliente dice: {0}", respuesta);
+                    Console.WriteLine("Responder:");
+                    mensaje = Console.ReadLine().Trim();
+                    cliente.Escribir(mensaje);
+                    if (cliente.LeerRespuestaServidor(mensaje))
+                    {
+                        cliente.Desconectar();
+                        Console.WriteLine("El Servidor dice: chao");
+                        Console.WriteLine("Anotado en la libreta de cosas que no me importan");
+                        cont = 1;
+                    }
+                }
+            }
+
         }
 
     }

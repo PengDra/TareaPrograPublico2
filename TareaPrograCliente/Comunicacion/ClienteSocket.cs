@@ -76,9 +76,71 @@ namespace TareaPrograCliente.Comunicacion
                 return false;
             }
         }
+        public bool LeerMensajeEnviado(string mensaje)
+        {
+            if (mensaje.ToLower() == "chao")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool LeerRespuestaServidor(string mensaje)
+        {
+            if (mensaje.ToLower() == "chao")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void ComprobarMensajes(ClienteSocket cliente)
+        {
+            string mensaje;
+            string respuesta;
+            //Esperar Mensaje
+            int cont = 0;
+            while (cont == 0)
+            {
+                Console.WriteLine("Enviar Mensaje:");
+                mensaje = Console.ReadLine().Trim();
+                if (cliente.LeerMensajeEnviado(mensaje))
+                {
+
+                    cliente.Desconectar();
+                    
+                    Console.WriteLine("Al cabo que ni queria seguir hablando contigo");
+                    cont = 1;
 
 
+                }
+                else
+                {
 
+                    
+
+                    mensaje = cliente.Leer();
+                    cliente.Escribir(mensaje);
+                    if (cliente.LeerRespuestaServidor(mensaje))
+                    {
+                        cliente.Desconectar();
+                        Console.WriteLine("El Servidor dice: chao");
+                        Console.WriteLine("Al cabo que ni queria seguir hablando contigo");
+                        cont = 1;
+                    }
+                    else {
+                        Console.WriteLine("El cliente dice: {0}",mensaje);
+
+                    }
+                    
+
+                }
+            }
+        }
     }
 }
 
