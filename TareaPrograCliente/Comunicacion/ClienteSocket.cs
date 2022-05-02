@@ -110,19 +110,12 @@ namespace TareaPrograCliente.Comunicacion
                 mensaje = Console.ReadLine().Trim();
                 if (cliente.LeerMensajeEnviado(mensaje))
                 {
-
-                    cliente.Desconectar();
-                    
+                    cliente.Desconectar();                 
                     Console.WriteLine("Al cabo que ni queria seguir hablando contigo");
                     cont = 1;
-
-
                 }
                 else
                 {
-
-                    
-
                     mensaje = cliente.Leer();
                     cliente.Escribir(mensaje);
                     if (cliente.LeerRespuestaServidor(mensaje))

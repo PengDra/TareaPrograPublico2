@@ -35,7 +35,6 @@ namespace TareaPrograCliente
                     if (mensaje == "chao")
                     {
                         clienteSocket.Desconectar();
-                        
                         cont = 1;
                     }
                     Console.WriteLine("Esperando respuesta...");
@@ -45,12 +44,8 @@ namespace TareaPrograCliente
                     {
                         clienteSocket.Desconectar();
                         Console.WriteLine("Al cabo que ni queria seguir hablando contigo");
-
                         cont = 1;
-
                     }
-                    
-
                 }
                 Console.WriteLine("Conexion terminada :C");
 
@@ -60,12 +55,8 @@ namespace TareaPrograCliente
                 Console.WriteLine("Error de comunicacion...");
             }
             Console.ReadKey();
-
         }
     }
-    
-  
-
-    }
+}
 
  
