@@ -110,7 +110,7 @@ namespace TareaProgra.Comunicacion
                         Console.WriteLine("El Servidor dice: chao");
                         Console.WriteLine("Anotado en la libreta de cosas que no me importan");
                         cont = 1;
-                        //hola
+                        
                     }
                 }
             }
