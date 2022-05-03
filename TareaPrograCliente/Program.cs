@@ -17,7 +17,6 @@ namespace TareaPrograCliente
         {
             int puerto = Convert.ToInt32(ConfigurationManager.AppSettings["puerto"]);
             string servidor = ConfigurationManager.AppSettings["servidor"];
-
             Console.ForegroundColor = ConsoleColor.Green;            
             Console.WriteLine("Conectando a servidor {0} en puerto {1}", servidor, puerto);
             ClienteSocket clienteSocket = new ClienteSocket(servidor, puerto);
@@ -42,6 +41,7 @@ namespace TareaPrograCliente
                     Console.WriteLine("R: {0}", respuesta);
                     if (respuesta == "chao")
                     {
+                        //Hola
                         clienteSocket.Desconectar();
                         Console.WriteLine("Al cabo que ni queria seguir hablando contigo");
                         cont = 1;
